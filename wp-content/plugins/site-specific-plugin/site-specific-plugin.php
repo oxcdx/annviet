@@ -17,7 +17,7 @@ Description: Site Specific Plugin for Bowater
 */
 
 function google_fonts() {
-  wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Libre+Baskerville&display=block', false );
+  wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Dosis:wght@400;500&display=block', false );
 }
 add_action( 'wp_enqueue_scripts', 'google_fonts' );
 
@@ -162,6 +162,8 @@ function my_wp_nav_menu_objects( $items, $args ) {
 	return $items;
 	
 }
+
+
 
 // function ox_add_cpt_to_archive_page( $query ) {
 //   if( (is_category() || is_tag()) && $query->is_archive() && empty( $query->query_vars['suppress_filters'] ) ) {

@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 
 	</header><!-- .entry-header -->
   <div class="ox-featured">
-	  <?php echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
+	  <?php // echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
   </div>
 	<div class="entry-content">
 
