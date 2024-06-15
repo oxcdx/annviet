@@ -36,6 +36,15 @@ b, strong {
 
 .h1 ,h1 {
   font-family: 'Inter', sans-serif;
+  font-size: 2rem;
+}
+.h2 ,h2 {
+  font-size: 1.6rem;
+  margin: 2rem 0 1rem;
+}
+.h3 ,h3 {
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
 }
 
 .h4, h4 {
@@ -74,17 +83,23 @@ a:hover {
     margin-top: 2rem;
   }
 }
+
+.entry-content {
+  > * {
+    max-width: 920px;
+  }
+}
 p a {
   text-decoration: underline;
 }
 p a:hover {
   opacity: 1;
 }
-
-.blockquote, .wp-block-quote {
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
-  font-weight: 300;
+// Blockquotes
+.blockquote {
+  font-style: italic;
+  margin-top: $blockquote-margin-y;
+  margin-bottom: $blockquote-margin-y;
 }
 
 .ox-landing-caption {

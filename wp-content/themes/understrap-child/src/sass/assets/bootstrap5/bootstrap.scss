@@ -8,7 +8,8 @@
 // scss-docs-start import-stack
 // Configuration
 @import "functions";
-@import "variables";
+@import "custom_variables"; // your custom variables file
+// @import "variables";
 @import "mixins";
 @import "utilities";
 
