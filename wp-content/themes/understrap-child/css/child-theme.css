@@ -5489,8 +5489,8 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0;
 }
 .card > hr {
   margin-right: 0;
@@ -5502,13 +5502,13 @@ textarea.form-control-lg {
 }
 .card > .list-group:first-child {
   border-top-width: 0;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .card > .list-group:last-child {
   border-bottom-width: 0;
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 .card > .card-header + .list-group,
 .card > .list-group + .card-footer {
@@ -5541,19 +5541,19 @@ textarea.form-control-lg {
   padding: 0.5rem 1rem;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 0 solid rgba(0, 0, 0, 0.125);
 }
 .card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  border-radius: 0 0 0 0;
 }
 
 .card-footer {
   padding: 0.5rem 1rem;
   background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-top: 0 solid rgba(0, 0, 0, 0.125);
 }
 .card-footer:last-child {
-  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+  border-radius: 0 0 0 0;
 }
 
 .card-header-tabs {
@@ -5575,7 +5575,7 @@ textarea.form-control-lg {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  border-radius: calc(0.25rem - 1px);
+  border-radius: 0;
 }
 
 .card-img,
@@ -5586,14 +5586,14 @@ textarea.form-control-lg {
 
 .card-img,
 .card-img-top {
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .card-img,
 .card-img-bottom {
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px);
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .card-group > .card {
@@ -15473,6 +15473,18 @@ figure.woocommerce-product-gallery__wrapper {
 }
 
 @font-face {
+  font-family: "Oldschool Grotesk Regular";
+  src: url("../fonts/Oldschool-Grotesk-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Oldschool Grotesk Medium";
+  src: url("../fonts/Oldschool-Grotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
   font-family: FontAwesome;
   src: url(../fonts/fontawesome-webfont.eot?v=4.7.0);
   src: url(../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0);
@@ -15484,7 +15496,7 @@ html, body {
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   color: #222;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15510,43 +15522,50 @@ b, strong {
 }
 
 .h1, h1 {
-  font-family: "Inter", sans-serif;
+  font-family: "Oldschool Grotesk Medium", sans-serif;
   font-size: 2rem;
 }
 
 .h2, h2 {
+  font-family: "Oldschool Grotesk Medium", sans-serif;
   font-size: 1.6rem;
   margin: 2rem 0 1rem;
 }
 
 .h3, h3 {
+  font-family: "Oldschool Grotesk Medium", sans-serif;
   font-size: 1.4rem;
   margin: 2rem 0 1rem;
 }
 
 .h4, h4 {
+  font-family: "Oldschool Grotesk Medium", sans-serif;
   font-size: 1.3rem;
 }
 
 .h5, h5 {
-  font-family: "Dosis", sans-serif;
-  font-size: 1.3rem;
+  font-family: "Oldschool Grotesk Medium", sans-serif;
+  font-size: 1.2rem;
 }
 
 a {
-  color: #222;
+  color: #000;
   opacity: 1;
   text-decoration: none;
   transition: opacity 0.15s linear, color 0.15s linear;
 }
 
 a:hover {
-  color: #92e8ff;
+  color: #333;
 }
 @media (min-width: 768px) {
   a:hover {
     opacity: 1;
   }
+}
+
+.navbar-nav .active a {
+  text-decoration: underline;
 }
 
 @media (min-width: 768px) {
@@ -15778,6 +15797,21 @@ p a:hover {
   font-family: FontAwesome;
 }
 
+.card .card-body {
+  border-bottom: 1px solid #dee2e6;
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+}
+
+.ratio img {
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
 .ox-search-toggle::after {
   display: inline-block;
   margin-left: 0;
@@ -15902,10 +15936,9 @@ p a:hover {
 
 .navbar-nav li {
   margin: 0 1rem;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 400;
-  font-family: "Dosis", sans-serif;
-  letter-spacing: 0.5px;
+  font-family: "Oldschool Grotesk Regular", sans-serif;
   order: 1;
 }
 @media (min-width: 1200px) {
@@ -15924,7 +15957,7 @@ p a:hover {
 }
 
 .ox-main-nav h1, .ox-main-nav .h1 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Oldschool Grotesk Regular", sans-serif;
   font-weight: 400;
   font-size: 1.4rem;
   margin: 0;
@@ -15998,11 +16031,7 @@ p a:hover {
   -o-object-position: center;
   object-position: center;
   height: 100%;
-  opacity: 0.5;
   transition: 0.2s opacity linear;
-}
-.ox-carousel .carousel-item:hover img {
-  opacity: 1;
 }
 
 .ox-carousel .carousel-caption {
@@ -16156,6 +16185,12 @@ p a:hover {
   object-fit: contain;
   -o-object-position: left;
   object-position: left;
+}
+
+.ox-intro-slide {
+  font-family: "Oldschool Grotesk Medium", sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 .page-template-home-page .site-main article {

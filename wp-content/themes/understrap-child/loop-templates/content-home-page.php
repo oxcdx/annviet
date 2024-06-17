@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 
-<article <?php post_class('text-center'); ?> id="post-<?php the_ID(); ?>">
+<article <?php post_class('text-center pb-5'); ?> id="post-<?php the_ID(); ?>">
 
 	<header class="entry-header">
 
@@ -19,7 +19,7 @@ defined( 'ABSPATH' ) || exit;
   <div class="ox-featured">
 	  <?php // echo get_the_post_thumbnail( $post->ID, 'large' ); ?>
   </div>
-	<div class="entry-content">
+	<div class="entry-content pb-5">
 
 		<?php
 		the_content();

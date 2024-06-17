@@ -22,7 +22,12 @@ function understrap_remove_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
 
-
+//
+function preload_fonts() {
+  echo '<link rel="preload" href="' . get_stylesheet_directory_uri() . '/fonts/Oldschool-Grotesk-Regular.otf" as="font" type="font/otf" crossorigin>';
+  echo '<link rel="preload" href="' . get_stylesheet_directory_uri() . '/fonts/Oldschool-Grotesk-Medium.otf" as="font" type="font/otf" crossorigin>';
+}
+add_action('wp_head', 'preload_fonts');
 
 /**
  * Enqueue our stylesheet and javascript file
@@ -85,5 +90,14 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+function add_active_class_to_nav_menu($classes, $item) {
+    if (is_singular('projects') && $item->title == 'Projects') { // Change 'Projects' to the exact title of your menu item
+        $classes[] = 'active';
+    }
+
+    return $classes;
+}
+add_filter('nav_menu_css_class', 'add_active_class_to_nav_menu', 10, 2);
 
 
