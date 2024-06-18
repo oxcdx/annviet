@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<div class="fixed-bottom ox-partners-home" id="wrapper-footer">
+<div class="ox-partners-home" id="wrapper-footer">
 
 	<div class="">
 

@@ -16021,7 +16021,7 @@ p a:hover {
 }
 @media (min-width: 1200px) {
   .ox-carousel .carousel-item {
-    height: 50vmin;
+    height: 500px;
     max-height: 500px;
   }
 }
@@ -16058,7 +16058,7 @@ p a:hover {
   margin-right: 0;
   margin-bottom: 0;
   margin-left: 0;
-  border-top: 3px solid #000;
+  border-top: 1px solid #000;
 }
 .ox-carousel .carousel-indicators .active {
   background-color: #92e8ff;
@@ -16123,31 +16123,6 @@ p a:hover {
 
 .ox-featured {
   margin-bottom: 3rem;
-}
-
-@media (max-width: 768px) {
-  .ox-partners-home.ox-partners-home {
-    position: relative !important;
-    right: unset !important;
-    bottom: unset !important;
-    z-index: 1019 !important;
-  }
-}
-@media (max-height: 690px) {
-  .ox-partners-home.ox-partners-home {
-    position: relative !important;
-    right: unset !important;
-    bottom: unset !important;
-    z-index: 1019 !important;
-  }
-}
-@media (min-width: 1400px) {
-  .ox-partners-home.ox-partners-home {
-    position: fixed !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
-  }
 }
 
 .navbar-nav li.ox-home-btn {

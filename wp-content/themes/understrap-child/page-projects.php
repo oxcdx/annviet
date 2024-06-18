@@ -38,7 +38,7 @@ get_header(); ?>
                     while ($projects_query->have_posts()) {
                         $projects_query->the_post(); ?>
 
-                          <div class="col-6 col-md-4 col-lg-3">
+                          <div class="col-6 col-md-4 col-xxl-3 pb-4">
                             <div class="card">
                               <?php if (has_post_thumbnail()) { ?>
                                 <div class="ratio ratio-4x3">
