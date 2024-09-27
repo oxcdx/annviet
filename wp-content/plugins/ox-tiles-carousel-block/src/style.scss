@@ -1,0 +1,32 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+
+.wp-block-create-block-ox-tile-gallery {
+  .ox-dark-modal {
+    background: rgba(30, 30, 30, 0.96);
+  }
+  .carousel-item {
+    img {
+      width: auto;
+      height: 80%;
+      object-fit: contain;
+
+    }
+  }
+	.ox-tile-gallery-inner-container {
+		display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+	
+		img {
+			object-fit: cover;
+      aspect-ratio: 1;
+      cursor: zoom-in;
+		}
+	}
+}

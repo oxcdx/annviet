@@ -1,0 +1,17 @@
+{
+  "name": "acf/galleryx",
+  "title": "Tiles + Carousel Image Gallery",
+  "description": "A custom image gallery block with tiles and a full-screen carousel.",
+  "style": [ "file:./gallery.css" ],
+  "viewStyle": [ "file:./gallery.css" ],
+  "category": "media",
+  "icon": "format-gallery",
+  "keywords": ["gallery", "image", "images", "carousel", "tiles", "grid", "masonry", "lightbox", "lightbox-gallery", "lightbox-carousel", "carousel", "fullscreen", "fullscreen-carousel", "fullscreen-gallery", "fullscreen-lightbox", "fullscreen-lightbox-gallery", "fullscreen-lightbox-carousel", "fullscreen-carousel-gallery", "fullscreen-carousel-lightbox", "fullscreen-gallery-lightbox", "fullscreen-gallery-carousel", "fullscreen-carousel-gallery-lightbox", "fullscreen-lightbox-carousel-gallery", "fullscreen-carousel-lightbox-gallery", "fullscreen-gallery-lightbox-carousel", "fullscreen-gallery-carousel-lightbox", "fullscreen-carousel-gallery-lightbox", "fullscreen-lightbox-gallery-carousel", "fullscreen-gallery-carousel-lightbox", "fullscreen-carousel-lightbox-gallery", "fullscreen-lightbox-carousel-gallery", "fullscreen-gallery-lightbox-carousel", "fullscreen-carousel-gallery-lightbox", "fullscreen-lightbox-carousel-gallery", "fullscreen-gallery-carousel-lightbox"],
+  "acf": {
+      "mode": "edit",
+      "renderTemplate": "gallery.php"
+  },
+  "supports": {
+      "anchor": true
+  }
+}

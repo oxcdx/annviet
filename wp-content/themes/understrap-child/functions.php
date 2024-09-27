@@ -101,3 +101,43 @@ function add_active_class_to_nav_menu($classes, $item) {
 add_filter('nav_menu_css_class', 'add_active_class_to_nav_menu', 10, 2);
 
 
+function ox_register_acf_blocks() {
+  /**
+   * We register our block's with WordPress's handy
+   * register_block_type();
+   *
+   * @link https://developer.wordpress.org/reference/functions/register_block_type/
+   */
+  
+  register_block_type( 
+    __DIR__ . '/blocks/ox-tiles-carousel-gallery',
+    array(
+      'render_callback' => 'myplugin_render_callback'
+    )
+  );
+}
+// Here we call our tt3child_register_acf_block() function on init.
+add_action( 'init', 'ox_register_acf_blocks' );
+
+function myplugin_render_callback( $attributes, $content ) {
+
+  // Do not enqueue if we are in the editor.
+  // This will depend on your use case.
+  if ( is_admin() ) {
+      return $content;
+  }
+
+  wp_enqueue_style(
+      'myplugin_style',
+      '/blocks/ox-tiles-carousel-gallery/gallery.css',
+      array(),
+      '1.0.0'
+  );
+
+  return $content;
+}
+
+function enqueue_admin_scripts() {
+  wp_enqueue_script('admin-scripts', get_stylesheet_directory_uri() . '/admin-scripts.js', array(), '1.0.0', true);
+}
+add_action('admin_enqueue_scripts', 'enqueue_admin_scripts');

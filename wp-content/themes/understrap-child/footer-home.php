@@ -16,9 +16,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="ox-partners-home" id="wrapper-footer">
 
 	<div class="">
-
+    
 				<footer class="site-footer" id="colophon">
         <div class="mt-md-3 w-100 border-top">
+          
           <?php
             wp_nav_menu(
               array(
@@ -34,6 +35,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             );
             ?>
           </div>
+          <div class="p-3">An Việt Archives &copy; <?php echo date("Y"); ?></div>
 				</footer><!-- #colophon -->
 
 	</div><!-- container end -->

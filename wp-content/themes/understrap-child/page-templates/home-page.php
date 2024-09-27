@@ -63,7 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                       <img src="<?php echo esc_url( $image_1['image']['url'] ); ?>" class="d-block w-100" alt="<?php echo esc_attr( $image_1['image']['alt'] ); ?>" />
                       <div class="ox-intro-slide position-absolute">
                         
-                        <div class="display-5 pe-none user-select-none">
+                        <div class="display-5 pe-none user-select-none d-none">
                           <p>&ldquo;An Việt is a 
                             <br />&nbsp;&nbsp;state of mind. 
                             <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It means

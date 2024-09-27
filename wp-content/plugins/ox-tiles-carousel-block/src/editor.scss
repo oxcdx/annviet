@@ -1,0 +1,22 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+ // override the default gallery styles to match output of ox-tiles-carousel-block in front end
+
+.acf-field-gallery {
+  .acf-gallery[data-columns="5"] .acf-gallery-attachment {
+    width: 25%;
+  }
+  .acf-gallery[data-columns="6"] .acf-gallery-attachment {
+    width: 25%;
+  }
+  .acf-gallery[data-columns="7"] .acf-gallery-attachment {
+    width: 25%;
+  }
+  .acf-gallery[data-columns="8"] .acf-gallery-attachment {
+    width: 25%;
+  }
+}
