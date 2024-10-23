@@ -1,111 +1,101 @@
-/**
- * Use this file for JavaScript code that you want to run in the front-end
- * on posts/pages that contain this block.
- *
- * When this file is defined as the value of the `viewScript` property
- * in `block.json` it will be enqueued on the front end of the site.
- *
- * Example:
- *
- * ```js
- * {
- *   "viewScript": "file:./view.js"
- * }
- * ```
- *
- * If you're not making any changes to this file because your project doesn't need any
- * JavaScript running in the front-end, then you should delete this file and remove
- * the `viewScript` property from `block.json`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
- */
-import bootstrap from 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 /* eslint-disable no-console */
-// console.log( 'Hello World! (from create-block-ox-tile-gallery block)' );
 (function($) {
   $(document).ready(function(){
-    // console.log('document ready');
-    var myModal = new bootstrap.Modal(document.getElementById('galleryModal'))
-    var currentSlide = 0;
-    var totalSlides = $('.ox-tile-gallery-inner-container img').length;
-    var nextSlides = 10;
-    var prevSlides = 0;
+    // Object to store modal instances
+    var modals = {};
 
-    // console.log('totalSlides: ' + totalSlides);
+    // Loop through each gallery container and initialize modals
+    $('.ox-tile-gallery').each(function() {
+      var galleryContainer = $(this);
+      var uniqueId = galleryContainer.data('unique-id');
+      
+      // Check if the element exists
+      var modalElement = document.getElementById(uniqueId + 'Modal');
+      if (!modalElement) {
+        console.error('Modal element not found:', uniqueId + 'Modal');
+        return;
+      }
 
-    $(".ox-tile-gallery-inner-container").on("click","img",function(){
-      // console.log('ready');
-      currentSlide = $(this).data('slide-no');
-      nextSlides = (currentSlide + 5) > totalSlides ? totalSlides - currentSlide : 5;
-      prevSlides = (currentSlide - 5) < 0 ? currentSlide : 5;
-
-      $('#carouselGallery').carousel($(this).data('slide-no'));
-      myModal.show();
+      // Initialize the modal and store it in the modals object
+      modals[uniqueId] = new bootstrap.Modal(modalElement);
     });
 
-    // add class to all indicators more than 5 away from currentSlide
-    if (totalSlides > 11) {  
+    // Event listener for image clicks
+    $(".ox-tile-gallery-inner-container").on("click", "img", function() {
+      var galleryContainer = $(this).closest('.ox-tile-gallery');
+      var uniqueId = galleryContainer.data('unique-id');
+      var currentSlide = $(this).data('slide-no');
+      var totalSlides = galleryContainer.find('.ox-tile-gallery-inner-container img').length;
+      var nextSlides = (currentSlide + 5) > totalSlides ? totalSlides - currentSlide : 5;
+      var prevSlides = (currentSlide - 5) < 0 ? currentSlide : 5;
 
-      $('.carousel-indicators button').each(function(index) {
-        $(this).removeClass('visually-hidden');
-        $(this).removeClass('ox-smaller-indicator');
-        if (Math.abs(index - currentSlide) === nextSlides) {
-          $(this).addClass('ox-smaller-indicator');
-        }
-        if (index - currentSlide > nextSlides) {
-          $(this).addClass('visually-hidden');
-        }
-        // if (index - currentSlide < prevSlides) {
-        //   $(this).addClass('visually-hidden');
-        // }
+      // Access the correct modal instance and show it
+      var myModal = modals[uniqueId];
+      if (myModal) {
+        $('#' + uniqueId + 'Carousel').carousel(currentSlide);
+        myModal.show();
+      } else {
+        console.error('Modal instance not found for unique ID:', uniqueId);
       }
-      );
+    });
 
-      // when slide changes, add class to all indicators more than 5 away from currentSlide
-      $('#carouselGallery').on('slide.bs.carousel', function (e) {
-        currentSlide = e.to;
-        nextSlides = (currentSlide + 5) > totalSlides ? totalSlides - currentSlide : 5;
-        prevSlides = currentSlide < 5 ? currentSlide : 5;
-        nextSlides = nextSlides + (5 - prevSlides);
-        prevSlides = nextSlides > 5 ? prevSlides : prevSlides + (5 - nextSlides);
+    // Additional logic for handling carousel indicators
+    $('.ox-tile-gallery').each(function() {
+      var galleryContainer = $(this);
+      var uniqueId = galleryContainer.data('unique-id');
+      var totalSlides = galleryContainer.find('.ox-tile-gallery-inner-container img').length;
+      var currentSlide = 0;
+      var nextSlides = 10;
+      var prevSlides = 0;
 
-        // console.log('currentSlide: ' + currentSlide);
-        // console.log('nextSlides: ' + nextSlides);
-        // console.log('prevSlides: ' + prevSlides);
-
-        $('.carousel-indicators button').each(function(index) {
-          // console.log('index: ' + index);
+      if (totalSlides > 11) {
+        galleryContainer.find('.carousel-indicators button').each(function(index) {
           $(this).removeClass('visually-hidden');
-          $(this).removeClass('ox-smaller-indicator');          
-
-          if (index - currentSlide === nextSlides && currentSlide < (totalSlides - 5)) {
+          $(this).removeClass('ox-smaller-indicator');
+          if (Math.abs(index - currentSlide) === nextSlides) {
             $(this).addClass('ox-smaller-indicator');
-          }
-          if (nextSlides === prevSlides && currentSlide < (totalSlides - 5)) {
-            if (index === (currentSlide - prevSlides) && currentSlide > 4) {
-              $(this).addClass('ox-smaller-indicator');
-            }
-            if(index < (currentSlide - prevSlides) && currentSlide > 5) {
-              $(this).addClass('visually-hidden');
-            }
-          } else {
-            if (index === ((currentSlide - prevSlides) - 1) && currentSlide > 4) {
-              $(this).addClass('ox-smaller-indicator');
-            }
-            if(index < ((currentSlide - prevSlides) - 1) && currentSlide > 5) {
-              $(this).addClass('visually-hidden');
-            }
           }
           if (index - currentSlide > nextSlides) {
             $(this).addClass('visually-hidden');
           }
-        }
-        );
-      })
-    }
+        });
 
+        $('#' + uniqueId + 'Carousel').on('slide.bs.carousel', function (e) {
+          currentSlide = e.to;
+          nextSlides = (currentSlide + 5) > totalSlides ? totalSlides - currentSlide : 5;
+          prevSlides = currentSlide < 5 ? currentSlide : 5;
+          nextSlides = nextSlides + (5 - prevSlides);
+          prevSlides = nextSlides > 5 ? prevSlides : prevSlides + (5 - nextSlides);
 
+          galleryContainer.find('.carousel-indicators button').each(function(index) {
+            $(this).removeClass('visually-hidden');
+            $(this).removeClass('ox-smaller-indicator');
+
+            if (index - currentSlide === nextSlides && currentSlide < (totalSlides - 5)) {
+              $(this).addClass('ox-smaller-indicator');
+            }
+            if (nextSlides === prevSlides && currentSlide < (totalSlides - 5)) {
+              if (index === (currentSlide - prevSlides) && currentSlide > 4) {
+                $(this).addClass('ox-smaller-indicator');
+              }
+              if(index < (currentSlide - prevSlides) && currentSlide > 5) {
+                $(this).addClass('visually-hidden');
+              }
+            } else {
+              if (index === ((currentSlide - prevSlides) - 1) && currentSlide > 4) {
+                $(this).addClass('ox-smaller-indicator');
+              }
+              if(index < ((currentSlide - prevSlides) - 1) && currentSlide > 5) {
+                $(this).addClass('visually-hidden');
+              }
+            }
+            if (index - currentSlide > nextSlides) {
+              $(this).addClass('visually-hidden');
+            }
+          });
+        });
+      }
+    });
   });
 })(jQuery);
-/* eslint-enable no-console */

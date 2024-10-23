@@ -17,12 +17,13 @@
     "html": false
   },
   "textdomain": "ox-tiles-carousel-block",
-  "editorScript": "file:./gallery.js",
-  "editorStyle": "file:./editor.css",
-  "style": "file:./gallery.css",
-  "viewScript": "file:./view.js",
+  "editorScript": "file:./build/gallery.js",
+  "editorStyle": "file:./build/editor.css",
+  "style": "file:./build/gallery.css",
+  "viewScript": "file:./build/view.js",
   "acf": {
     "mode": "edit",
     "renderTemplate": "render.php"
-  }
+  },
+  "enqueue_assets": "ox_tiles_carousel_block_enqueue_assets"
 }

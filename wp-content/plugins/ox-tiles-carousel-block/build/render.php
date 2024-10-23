@@ -28,8 +28,11 @@ if ( ! empty( $block['align'] ) ) {
 $styles = array( 'background-color: ' . $background_color, 'color: ' . $text_color );
 $style  = implode( '; ', $styles );
 
+// Generate a unique ID for the gallery modal and carousel
+$unique_id = uniqid('gallery_');
+
 if( $images ): ?>
-  <div <?php echo esc_attr( $anchor ); ?> class="<?php echo esc_attr( $class_name ); ?>" >
+  <div <?php echo esc_attr( $anchor ); ?> class="<?php echo esc_attr( $class_name ); ?> ox-tile-gallery" data-unique-id="<?php echo esc_attr( $unique_id ); ?>">
     <div>
       <figure class="ox-tile-gallery-inner-container">
         <?php foreach( $images as $key=>$image ): 
@@ -48,20 +51,20 @@ if( $images ): ?>
       </figure>
     </div>
     <div
-      class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+      class="modal fade" id="<?php echo $unique_id; ?>Modal" tabindex="-1" aria-labelledby="<?php echo $unique_id; ?>ModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
         <div class="modal-content ox-dark-modal">
           <div class="modal-header border-0">
-            <h5 class="modal-title visually-hidden" id="galleryModalLabel">Image Gallery Carousel</h5>
+            <h5 class="modal-title visually-hidden" id="<?php echo $unique_id; ?>ModalLabel">Image Gallery Carousel</h5>
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body pb-5">
-            <div id="carouselGallery" class="carousel slide h-100" data-bs-interval="false">
+            <div id="<?php echo $unique_id; ?>Carousel" class="carousel slide h-100" data-bs-interval="false">
               <div class="carousel-indicators">
                 <?php foreach( $images as $key=>$image ): ?>
                   <button 
                     type="button" 
-                    data-bs-target="#carouselGallery" 
+                    data-bs-target="#<?php echo $unique_id; ?>Carousel" 
                     data-bs-slide-to="<?php echo $key; ?>"
                     class="<?php echo ($key === 0) ? 'active' : ''; ?>"
                     aria-current="<?php echo ($key === 0) ? 'true' : 'false'; ?>"
@@ -77,9 +80,9 @@ if( $images ): ?>
                   >
                     <div class="d-flex justify-content-center align-items-center w-100 h-100">
                       <img 
-                        src=<?php echo $image['url']; ?>
+                        src="<?php echo $image['url']; ?>"
                         class="d-block" 
-                        alt=<?php echo $image['alt']; ?>
+                        alt="<?php echo $image['alt']; ?>"
                       />
                       <div class="carousel-caption d-none d-md-block">
                         <?php echo $image['caption'] ? $image['caption'] : ''; ?>
@@ -87,11 +90,11 @@ if( $images ): ?>
                     </div>
                   </div>
                 <?php endforeach; ?>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselGallery" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#<?php echo $unique_id; ?>Carousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselGallery" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#<?php echo $unique_id; ?>Carousel" data-bs-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="visually-hidden">Next</span>
                 </button>

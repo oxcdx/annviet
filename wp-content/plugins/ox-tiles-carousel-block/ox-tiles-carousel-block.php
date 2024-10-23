@@ -27,7 +27,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 function ox_tiles_carousel_block_ox_tiles_carousel_block_block_init() {
 	register_block_type( __DIR__ . '/build/block.json' );
 }
-add_action( 'init', 'ox_tiles_carousel_block_ox_tiles_carousel_block_block_init', 5 );
+add_action( 'init', 'ox_tiles_carousel_block_ox_tiles_carousel_block_block_init', 50 );
+
+function ox_tiles_carousel_block_register_acf_block() {
+  if ( function_exists( 'acf_register_block_type' ) ) {
+      acf_register_block_type( array(
+          'name'              => 'acf/ox-tiles-carousel-block',
+          'title'             => __( 'Ox Tiles Carousel Gallery', 'ox-tiles-carousel-block' ),
+          'description'       => __( 'A custom block for a tiles and carousel gallery.', 'ox-tiles-carousel-block' ),
+          'render_template'   => plugin_dir_path( __FILE__ ) . 'build/render.php',
+          'category'          => 'media',
+          'icon'              => 'format-gallery',
+          'keywords'          => array( 'gallery', 'carousel', 'tiles' ),
+          'editor_script'     => 'ox-tiles-carousel-block-editor-script',
+          'editor_style'      => 'ox-tiles-carousel-block-editor-style',
+          'script'            => 'ox-tiles-carousel-block-view-script',
+          'style'             => 'ox-tiles-carousel-block-style',
+      ) );
+  }
+}
+add_action( 'acf/init', 'ox_tiles_carousel_block_register_acf_block' );
 
 // Register ACF Fields
 function acf_accordion_block_register_include_fields() {
@@ -66,3 +85,34 @@ function ox_tiles_carousel_block_block_categories( $block_categories ) {
 	return $block_categories;
 }
 add_filter( 'block_categories_all', 'ox_tiles_carousel_block_block_categories' );
+
+// Enqueue scripts and styles for the editor and front end
+function ox_tiles_carousel_block_enqueue_assets() {
+  // Enqueue editor styles
+  wp_enqueue_style(
+      'ox-tiles-carousel-block-editor-style',
+      plugins_url('build/editor.css', __FILE__),
+      array(),
+      filemtime(plugin_dir_path(__FILE__) . 'build/editor.css')
+  );
+
+  // Enqueue front end styles and scripts
+  wp_enqueue_script(
+      'ox-tiles-carousel-block-view-script',
+      plugins_url('build/view.js', __FILE__),
+      array('jquery'),
+      filemtime(plugin_dir_path(__FILE__) . 'build/view.js'),
+      true
+  );
+
+  wp_enqueue_style(
+      'ox-tiles-carousel-block-style',
+      plugins_url('build/gallery.css', __FILE__),
+      array(),
+      filemtime(plugin_dir_path(__FILE__) . 'build/gallery.css')
+  );
+}
+add_action('enqueue_block_assets', 'ox_tiles_carousel_block_enqueue_assets');
+
+
+

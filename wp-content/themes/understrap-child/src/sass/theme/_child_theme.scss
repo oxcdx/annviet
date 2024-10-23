@@ -91,9 +91,12 @@ a:hover {
 }
 
 .site-main article {
+  a {
+    color: #2e7ebd;
+  }
   a:hover {
     @media (min-width: 768px) {
-      color: #444;
+      color: #008fff;
     }
   }
 }
@@ -116,10 +119,22 @@ p a:hover {
   opacity: 1;
 }
 // Blockquotes
-.blockquote {
+.blockquote, .wp-block-quote {
   font-style: italic;
   margin-top: $blockquote-margin-y;
   margin-bottom: $blockquote-margin-y;
+  padding: 0 0rem 0 1rem;
+}
+
+@media (min-width: 576px) {
+	.blockquote, .wp-block-quote {
+			padding: 0 0rem 0 2rem;
+	}
+}
+@media (min-width: 768px) {
+	.blockquote, .wp-block-quote {
+			padding: 0 4rem 0 3rem;
+	}
 }
 
 .ox-landing-caption {
@@ -646,7 +661,7 @@ width: fit-content;
 }
 
 .admin-bar .modal {
-  top: 32px!important;
+  top: 0!important;
 }
 
 

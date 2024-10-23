@@ -22,6 +22,20 @@ function understrap_remove_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
 
+// fix err
+if ( ! function_exists( 'understrap_get_select_control_class' ) ) {
+  /**
+   * Returns the Bootstrap class for select controls.
+   *
+   * @since 1.2.0
+   *
+   * @return string The Bootstrap class for select controls.
+   */
+  function understrap_get_select_control_class() {
+      return 'form-control';
+  }
+}
+
 //
 function preload_fonts() {
   echo '<link rel="preload" href="' . get_stylesheet_directory_uri() . '/fonts/Oldschool-Grotesk-Regular.otf" as="font" type="font/otf" crossorigin>';
@@ -101,41 +115,41 @@ function add_active_class_to_nav_menu($classes, $item) {
 add_filter('nav_menu_css_class', 'add_active_class_to_nav_menu', 10, 2);
 
 
-function ox_register_acf_blocks() {
-  /**
-   * We register our block's with WordPress's handy
-   * register_block_type();
-   *
-   * @link https://developer.wordpress.org/reference/functions/register_block_type/
-   */
+// function ox_register_acf_blocks() {
+//   /**
+//    * We register our block's with WordPress's handy
+//    * register_block_type();
+//    *
+//    * @link https://developer.wordpress.org/reference/functions/register_block_type/
+//    */
   
-  register_block_type( 
-    __DIR__ . '/blocks/ox-tiles-carousel-gallery',
-    array(
-      'render_callback' => 'myplugin_render_callback'
-    )
-  );
-}
-// Here we call our tt3child_register_acf_block() function on init.
-add_action( 'init', 'ox_register_acf_blocks' );
+//   register_block_type( 
+//     __DIR__ . '/blocks/ox-tiles-carousel-gallery',
+//     array(
+//       'render_callback' => 'myplugin_render_callback'
+//     )
+//   );
+// }
+// // Here we call our tt3child_register_acf_block() function on init.
+// add_action( 'init', 'ox_register_acf_blocks' );
 
-function myplugin_render_callback( $attributes, $content ) {
+// function myplugin_render_callback( $attributes, $content ) {
 
-  // Do not enqueue if we are in the editor.
-  // This will depend on your use case.
-  if ( is_admin() ) {
-      return $content;
-  }
+//   // Do not enqueue if we are in the editor.
+//   // This will depend on your use case.
+//   if ( is_admin() ) {
+//       return $content;
+//   }
 
-  wp_enqueue_style(
-      'myplugin_style',
-      '/blocks/ox-tiles-carousel-gallery/gallery.css',
-      array(),
-      '1.0.0'
-  );
+//   wp_enqueue_style(
+//       'myplugin_style',
+//       '/blocks/ox-tiles-carousel-gallery/gallery.css',
+//       array(),
+//       '1.0.0'
+//   );
 
-  return $content;
-}
+//   return $content;
+// }
 
 function enqueue_admin_scripts() {
   wp_enqueue_script('admin-scripts', get_stylesheet_directory_uri() . '/admin-scripts.js', array(), '1.0.0', true);

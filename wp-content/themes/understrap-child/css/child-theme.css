@@ -15568,9 +15568,12 @@ a:hover {
   text-decoration: underline;
 }
 
+.site-main article a {
+  color: #2e7ebd;
+}
 @media (min-width: 768px) {
   .site-main article a:hover {
-    color: #444;
+    color: #008fff;
   }
 }
 
@@ -15594,8 +15597,19 @@ p a:hover {
   font-style: italic;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  padding: 0 0rem 0 1rem;
 }
 
+@media (min-width: 576px) {
+  .blockquote, .wp-block-quote {
+    padding: 0 0rem 0 2rem;
+  }
+}
+@media (min-width: 768px) {
+  .blockquote, .wp-block-quote {
+    padding: 0 4rem 0 3rem;
+  }
+}
 .ox-landing-caption {
   font-size: 0.8rem;
   font-weight: 200;
@@ -16106,7 +16120,7 @@ p a:hover {
 }
 
 .admin-bar .modal {
-  top: 32px !important;
+  top: 0 !important;
 }
 
 .fa-angle-left:before {

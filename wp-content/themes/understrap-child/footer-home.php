@@ -17,26 +17,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 	<div class="">
     
-				<footer class="site-footer" id="colophon">
-        <div class="mt-md-3 w-100 border-top">
-          
-          <?php
-            wp_nav_menu(
-              array(
-                'theme_location'  => 'partner-logos-menu',
-                'container_class' => '',
-                'container_id'    => '',
-                'menu_class'      => 'partner-logos-menu d-md-flex align-items-center justify-content-between w-100',
-                'fallback_cb'     => '',
-                'menu_id'         => 'partner-logos-menu',
-                'depth'           => 2,
-                'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
-              )
-            );
-            ?>
-          </div>
-          <div class="p-3">An Việt Archives &copy; <?php echo date("Y"); ?></div>
-				</footer><!-- #colophon -->
+    <footer class="site-footer" id="colophon">
+      <div class="mt-md-3 w-100 border-top">
+        
+        <?php
+          wp_nav_menu(
+            array(
+              'theme_location'  => 'partner-logos-menu',
+              'container_class' => '',
+              'container_id'    => '',
+              'menu_class'      => 'partner-logos-menu d-md-flex align-items-center justify-content-between w-100',
+              'fallback_cb'     => '',
+              'menu_id'         => 'partner-logos-menu',
+              'depth'           => 2,
+              'walker'          => new Understrap_WP_Bootstrap_Navwalker(),
+            )
+          );
+          ?>
+        </div>
+        <div class="p-3">An Việt Archives &copy; <?php echo date("Y"); ?></div>
+    </footer><!-- #colophon -->
 
 	</div><!-- container end -->
 
